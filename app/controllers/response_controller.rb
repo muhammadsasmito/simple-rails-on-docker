@@ -3,7 +3,7 @@ class ResponseController < ApplicationController
   before_action :response_params, except: [:index, :show]
 
   def index
-    @response = Response.all
+    @response = Response.all.order("created_at DESC")
     render json: @response.present? ? { status: :ok, result: @response, errors: nil } : { status: :unprocessable_entity, result: @response, errors: nil }
   end
   
