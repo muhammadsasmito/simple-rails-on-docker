@@ -4,9 +4,12 @@ services:
   web:
     build: .
     volumes:
-      - ./:/app
+      - app-volume:/app
     working_dir: /app
-    command: "bundle exec rake -p 3000 -b '0.0.0.0'"
+    command: "bundle exec rails s -p 3000 -b '0.0.0.0'"
+    # command: 
+    #   - "bundle exec rails db:create"
+    #   - "bundle exec rails db:migrate"
     ports:
       - 3000:3000
     depends_on:
@@ -15,3 +18,14 @@ services:
       DATABASE_URL: postgres://postgres@db
   db:
     image: postgres:10.3-alpine
+  editor:
+    image: codercom/code-server:1.621
+    working_dir: /app
+    command: --allow-http --no-auth
+    ports:
+      - "8443:8443"
+    volumes:
+      - app-volume:/app
+
+volumes:
+  app-volume:
