@@ -1,24 +1,16 @@
-# README
+# How to Develop Rails on Docker all-in-one
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Pre
+* docker and docker-compose installed on your machine
+* rvm, ruby, bundler gem and rails gem (to generate first project)
 
-Things you may want to cover:
+## Use
+* clone this or get the recipe on this repo
+* generate new project first with `rails new . --force --database=postgresql --skip-bundle`
+* `docker-compose build .`
+* `docker-compose up -d`
+* you can modify and coding on `http://localhost:8443` or preferable
 
-* Ruby version
+## Happy Hacking
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
